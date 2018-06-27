@@ -1,7 +1,7 @@
 {
-  "name": "Mean",
+  "name": "MyBibli",
   "version": "2.0.1",
-  "description": "A MEAN stack framework using Angular Webpack Starter kit - featuring Angular (Router, Http, Forms, Services, Tests, E2E, Coverage), Karma, Protractor, Jasmine, Istanbul, TypeScript, and Webpack",
+  "description": "Bibli",
   "keywords": [
     "angular",
     "angular2",
@@ -9,8 +9,7 @@
     "webpack",
     "typescript"
   ],
-  "author": "Lior Kesos <lior@linnovate.net>",
-  "homepage": "http://mean.io",
+  "author": "Gilmart Quentin",
   "license": "MIT",
   "scripts": {
     "build:aot:prod": "npm run clean:dist && npm run clean:aot && cross-env BUILD_AOT=1 npm run webpack -- --config config/webpack.prod.js  --progress --profile --bail",
