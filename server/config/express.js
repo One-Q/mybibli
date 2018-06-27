@@ -17,6 +17,8 @@ import path from 'path';
 import appRoot from 'app-root-path';
 import innograph from 'innograph'
 import postCtrl from '../controllers/post.controller';
+import passport from 'passport'
+import auth from './passport'
 
 
 const app = express();
@@ -39,6 +41,8 @@ app.use(helmet());
 // enable CORS - Cross Origin Resource Sharing
 app.use(cors());
 
+// app.use(passport.initialize('jwt', {session: false}));
+
 // enable detailed API logging in dev env
 if (config.env === 'development') {
   expressWinston.requestWhitelist.push('body');
@@ -51,6 +55,8 @@ if (config.env === 'development') {
   // }));
 }
 app.use(express.static(path.join(appRoot.path, 'dist')));
+
+app.use(auth.initialize())
 
 app.use('/api', routes);
 

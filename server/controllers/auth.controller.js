@@ -2,6 +2,7 @@ import jwt from 'jsonwebtoken';
 import httpStatus from 'http-status';
 import APIError from '../helpers/APIError';
 import config from '../config/config';
+import User from '../models/user.model';
 
 // sample user, used for authentication
 const user = {
@@ -17,20 +18,26 @@ const user = {
  * @returns {*}
  */
 function login(req, res, next) {
-  // Ideally you'll fetch this from the db
-  // Idea here was to show how jwt works with simplicity
-  if (req.body.username === user.username && req.body.password === user.password) {
-    const token = jwt.sign({
-      username: user.username
-    }, config.jwtSecret);
-    return res.json({
-      token,
-      username: user.username
-    });
-  }
 
-  const err = new APIError('Authentication error', httpStatus.UNAUTHORIZED, true);
-  return next(err);
+  let email = req.body.email;
+  let password = req.body.password;
+
+  User.findOne({email}).then((user) => {
+    if(user) {
+      if(user.validatePassword(password)) {
+        let payload = {
+          id: user.id,
+          email: user.email
+        }
+        let token = jwt.sign(payload, config.jwtSecret)
+        return res.json({token})
+      } else {
+        return res.status(400).json({ error: "Mot de passe incorrect" });
+      }
+    } else {
+      return res.status(400).json({ error: "Utilisateur introuvable" });
+    }
+  })
 }
 
 /**
@@ -47,4 +54,59 @@ function getRandomNumber(req, res) {
   });
 }
 
-export default { login, getRandomNumber };
+function register(req, res) {
+  
+  Promise.all([checkEmail(req.body.email), checkUsername(req.body.username)]).then(() => {
+    const user = new User({
+      username: req.body.username,
+      email: req.body.email,
+    });
+
+    user.password = user.generatehash(req.body.password) 
+
+    user.save()
+      .then(savedUser => {
+        let payload = {
+          id: savedUser.id,
+          email: savedUser.email
+        }
+        let token = jwt.sign(payload, config.jwtSecret)
+        return res.json({token})
+      })
+      .catch(e => {
+        console.log(e)
+        return res.status(500).json({
+        error: 'Erreur interne'
+        })
+      });
+  }).catch((error) => {
+    return res.status(400).json({ error: error });
+  })
+
+}
+
+function checkEmail(email) {
+  return new Promise((res, rej) => {
+    User.findOne({ email: email }).then((user) => {
+        if (!user)
+            res(true);
+        else
+            rej('Email déjà utilisé.');
+    });
+  })
+
+}
+
+function checkUsername(username) {
+  return new Promise((res, rej) => {
+      User.findOne({ username: username }).then((user) => {
+          if (!user)
+              res(true);
+          else
+              rej('Nom d\'utilisateur déjà utilisé.');
+      });
+  })
+}
+
+
+export default { login, getRandomNumber, register };

@@ -27,14 +27,26 @@ function get(req, res) {
  * @returns {User}
  */
 function create(req, res, next) {
+  User.findOne({
+    email: req.body.email
+  }, (err, user) => {
+    if (user) {
+      res.status(400).json({
+        error: 'L\'utilisateur existe déjà'
+      })
+    }
+  })
   const user = new User({
     username: req.body.username,
-    mobileNumber: req.body.mobileNumber
+    email: req.body.email,
+    password : user.generatehash(req.body.password) 
   });
 
   user.save()
     .then(savedUser => res.json(savedUser))
-    .catch(e => next(e));
+    .catch(e => res.status(500).json({
+      error: 'Erreur interne'
+    }));
 }
 
 /**
