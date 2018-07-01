@@ -71,6 +71,7 @@ function register(req, res) {
           email: savedUser.email
         }
         let token = jwt.sign(payload, config.jwtSecret)
+        console.log('User saved')
         return res.json({token})
       })
       .catch(e => {
