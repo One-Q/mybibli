@@ -40,7 +40,7 @@ export class RegisterComponent implements OnInit {
 
   register() {
     if(this.form.valid){
-      this.authService.register(this.form.value).subscribe((data) => {
+      this.authService.register(this.form.value).subscribe(data => {
         console.log(data.json())
       })
     }
