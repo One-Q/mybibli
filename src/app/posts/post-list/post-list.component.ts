@@ -30,22 +30,10 @@ export class PostListComponent implements OnInit {
   }
 
   public ngOnInit() {
-    this.posts = this._postService.get();
-    // Add debounce time to wait 300 ms for a new change instead of keep hitting the server
-    this.postControl.valueChanges.debounceTime(300).subscribe(name => {
-      this.nameFilter.next(name);
-    });
+
   }
   public deletePost(id: string) {
-    this._postService.delete(id)
-      .then((response) => {
-        this.openSnackBar(response.message, 'Delete');
-        this.posts.refetch();
-      })
-      .catch((error) => {
-        this.openSnackBar(error.message, 'Delete');
-
-      })
+    
   }
   public openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {

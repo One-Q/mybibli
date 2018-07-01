@@ -42,6 +42,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
+import { MyMaterialModule } from './material.module';
+import { HeaderComponent } from './shared/header/header.component';
+import { FooterComponent } from './shared/footer/footer.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -62,10 +67,14 @@ type StoreType = {
   bootstrap: [AppComponent],
   declarations: [
     AppComponent,
+    HeaderComponent,
+    FooterComponent,
     HomeComponent,
     ReactComponent,
     ProfileComponent,
     NoContentComponent,
+    RegisterComponent,
+    LoginComponent
   ],
   /**
    * Import Angular's modules.
@@ -76,10 +85,7 @@ type StoreType = {
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    MatToolbarModule,
-    MatCardModule,
-    MatListModule,
-    MatGridListModule,
+    MyMaterialModule,
     RouterModule.forRoot(ROUTES, { useHash: false, preloadingStrategy: PreloadAllModules }),
     ApolloModule.forRoot(client),
   ],

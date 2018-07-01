@@ -1,0 +1,28 @@
+<h1>Register</h1>
+<form [formGroup]="form" (ngSubmit)="register()">
+  <p>
+    <mat-form-field>
+      <input matInput formControlName="username" placeholder="Username">
+      <mat-error>L'adresse email est requise et doit être une adresse de Vinci</mat-error>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field>
+      <input matInput formControlName="email" placeholder="Adresse email" type="email">
+      <mat-error>L'adresse email est requise et doit être une adresse de Vinci</mat-error>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field>
+      <input matInput formControlName="password" placeholder="Mot de passe" type="password">
+      <mat-error>L'adresse email est requise et doit être une adresse de Vinci</mat-error>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field>
+      <input matInput formControlName="passwordConfirm" placeholder="Confirmation du Mot de passe" type="password">
+      <mat-error>L'adresse email est requise et doit être une adresse de Vinci</mat-error>
+    </mat-form-field>
+  </p>
+  <button mat-raised-button color="primary">Envoyer</button>
+</form>
