@@ -1,7 +1,6 @@
 @import './material.theme.scss';
 
-html, body{
-  height: 100%;
+body{
   margin: 0;
   padding: 0;
   font-family:  Helvetica, sans-serif;
@@ -31,3 +30,71 @@ header{
 }
 }
 
+.auth-container {
+  height: 100vh;
+  display: flex;
+
+  .first-container, .second-container {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .first-container {
+    background: linear-gradient(90deg, #1CB5E0 0%, #000851 100%);
+
+    .phrase-container {
+      width: 400px;
+
+      p {
+        font-size: 62px;
+        font-weight: bold;
+        font-style: italic;
+        background-color: ivory;
+      }
+    }
+  }
+}
+
+a {
+  text-decoration: none;
+  color: #155E8F;
+  font-weight: bold;
+  transition: all ease-in-out .3s;
+}
+
+a:hover {
+  color: #000851;
+}
+
+.auth-form-container {
+  width: 400px;
+  border: 1px solid rgba(1,41,138,0.2);
+  border-radius: 17px;
+  padding: 30px 20px;
+  box-shadow: 0 16px 15px 0 rgba(1,41,138,0.2);
+
+  .auth-form {
+    width: 300px;
+    margin: 0 auto;
+    text-align: center;
+
+    h1 {
+      text-align: center;
+    }
+
+    .full-input {
+      width: 100%;
+    }
+  }
+
+  .auth-form.login {
+    h1 {
+      margin-bottom: 50px;
+    }
+    button {
+      margin-top: 10px;
+    }
+  }
+}
