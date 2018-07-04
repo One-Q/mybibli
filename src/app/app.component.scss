@@ -42,7 +42,9 @@ header{
   }
 
   .first-container {
-    background: linear-gradient(90deg, #1CB5E0 0%, #000851 100%);
+    background: #D31027;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #EA384D, #D31027);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #EA384D, #D31027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
     .phrase-container {
       width: 400px;
@@ -52,6 +54,8 @@ header{
         font-weight: bold;
         font-style: italic;
         background-color: ivory;
+        display: inline-block;
+        padding: 0 20px 0 10px;
       }
     }
   }
@@ -59,13 +63,13 @@ header{
 
 a {
   text-decoration: none;
-  color: #155E8F;
+  color: #ea384d;
   font-weight: bold;
   transition: all ease-in-out .3s;
 }
 
 a:hover {
-  color: #000851;
+  color: #d31027;
 }
 
 .auth-form-container {
@@ -96,5 +100,42 @@ a:hover {
     button {
       margin-top: 10px;
     }
+  }
+}
+
+.btn {
+  border: none;
+  cursor: pointer;
+  background: #ea384d;
+  text-align: center;
+  padding: 10px 25px;
+  color: white;
+  box-shadow: 0 6px 15px 0 rgba(234,56,77,0.5);
+  transition: all ease-in-out .3s;
+  
+  &:hover {
+    background: #d31027;
+  }
+
+  &.full-width {
+    width: 100%;
+  }
+
+  &.btn-rounded {
+    border-radius: 50px;
+  }
+
+  &:active, &:focus {
+    outline: none;
+  }
+}
+
+@media (max-width: 990px) {
+  .first-container {
+    display: none;
+  }
+
+  .second-container {
+    width: 100%;
   }
 }
