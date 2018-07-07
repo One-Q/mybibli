@@ -28,7 +28,7 @@ import { NgModule } from '@angular/core';
     MatTableModule,
     MatCheckboxModule,
     MatPaginatorModule,
-    MatTabsModule
+    MatTabsModule,
   ],
   exports: [
     MatToolbarModule,
@@ -43,7 +43,7 @@ import { NgModule } from '@angular/core';
     MatTableModule,
     MatCheckboxModule,
     MatPaginatorModule,
-    MatTabsModule
+    MatTabsModule,
   ]
 })
 export class MyMaterialModule {}

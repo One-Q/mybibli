@@ -223,6 +223,10 @@ module.exports = function (options) {
      * See: http://webpack.github.io/docs/configuration.html#plugins
      */
     plugins: [
+      new webpack.ProvidePlugin({
+        $: "jquery",
+        jQuery: "jquery"
+      }),
       // Use for DLLs
       // new AssetsPlugin({
       //   path: helpers.root('dist'),

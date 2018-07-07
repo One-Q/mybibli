@@ -1,1 +1,39 @@
-<h1>Books</h1>
+<app-header></app-header>
+<div class="container main">
+  <div class="row">
+    <h1>Books</h1>
+  </div>
+  <div class="row">
+    <div class="books-list">
+      <div class="example-container mat-elevation-z8">
+        <mat-table #table [dataSource]="books">
+      
+          <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+      
+          <!-- Position Column -->
+          <ng-container matColumnDef="isbn">
+            <mat-header-cell *matHeaderCellDef> ISBN. </mat-header-cell>
+            <mat-cell *matCellDef="let book"> {{book.isbn}} </mat-cell>
+          </ng-container>
+      
+          <!-- Name Column -->
+          <ng-container matColumnDef="title">
+            <mat-header-cell *matHeaderCellDef> Titre </mat-header-cell>
+            <mat-cell *matCellDef="let book"> {{book.title}} </mat-cell>
+          </ng-container>
+      
+          <!-- Weight Column -->
+          <ng-container matColumnDef="author">
+            <mat-header-cell *matHeaderCellDef> Auteur </mat-header-cell>
+            <mat-cell *matCellDef="let book"> {{book.author}} </mat-cell>
+          </ng-container>
+
+      
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selectBook(row)"></mat-row>
+        </mat-table>
+      </div>
+    </div>
+  </div>
+</div>

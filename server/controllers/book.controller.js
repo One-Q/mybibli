@@ -12,7 +12,7 @@ function getBooks(req, res) {
       if(err) {
         return res.status(500).json({error: err});
       } else {
-        return res.json({books})
+        return res.json(books)
       }
     })
 }

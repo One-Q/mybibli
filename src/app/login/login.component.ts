@@ -33,7 +33,6 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    console.log(this.form.controls['password'].errors)
     if(this.form.valid) {
       this.authService.login(this.form.value).subscribe(data => {
         let newData = data.json()

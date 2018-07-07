@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core'
 import { Http, RequestOptions } from '@angular/http';
 import * as jwt_decode from "jwt-decode";
 import { IUser } from './user.interface';
+import { Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 @Injectable()
 export class AuthService {
@@ -27,6 +28,10 @@ export class AuthService {
   setUser(token) {
     localStorage.setItem('token', token)
     this.user = jwt_decode(token);
+  }
+
+  isLoggedIn() {
+    return localStorage.getItem('token')
   }
 
 }

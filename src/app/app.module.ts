@@ -47,11 +47,21 @@ import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './shared/auth-guard.service';
+import { AuthService } from './shared/auth.service';
+import { ConnectedGuard } from './shared/connected-guard.service';
+import { BooksModule } from './books';
+import { BookListComponent } from './books/book-list/book-list.component';
+import { BookManageComponent } from './books/book-manage/book-manage.component';
+import { HttpClientModule } from '@angular/common/http';
 
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
-  AppState
+  AppState,
+  AuthService,
+  AuthGuard,
+  ConnectedGuard
 ];
 
 type StoreType = {
@@ -74,7 +84,9 @@ type StoreType = {
     ProfileComponent,
     NoContentComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    BookListComponent,
+    BookManageComponent
   ],
   /**
    * Import Angular's modules.
@@ -85,6 +97,7 @@ type StoreType = {
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
+    HttpClientModule,
     MyMaterialModule,
     RouterModule.forRoot(ROUTES, { useHash: false, preloadingStrategy: PreloadAllModules }),
     ApolloModule.forRoot(client),
@@ -94,7 +107,7 @@ type StoreType = {
    */
   providers: [
     ENV_PROVIDERS,
-    APP_PROVIDERS
+    APP_PROVIDERS,
   ]
 })
 export class AppModule {

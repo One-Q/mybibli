@@ -114,6 +114,7 @@
     "babel-register": "^6.24.1",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.2",
+    "bootstrap": "^4.1.1",
     "casual": "^1.5.14",
     "codelyzer": "~2.1.1",
     "concurrently": "^3.4.0",
