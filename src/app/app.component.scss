@@ -42,9 +42,12 @@ header{
   }
 
   .first-container {
-    background: #D31027;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #EA384D, #D31027);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #EA384D, #D31027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    /*background: #4C50FA;*/
+    background: rgba(76, 80, 250, 0.8);
+    width: 100%;
+    height: 100%;  /* fallback for old browsers */
+    /*background: -webkit-linear-gradient(to right, #EA384D, #D31027);  /* Chrome 10-25, Safari 5.1-6 */
+    /*background: linear-gradient(to right, #EA384D, #D31027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
     .phrase-container {
       width: 400px;
@@ -63,21 +66,20 @@ header{
 
 a {
   text-decoration: none;
-  color: #ea384d;
+  color: #4C50FA;
   font-weight: bold;
   transition: all ease-in-out .3s;
 }
 
 a:hover {
-  color: #d31027;
+  color: #4C50FA;
 }
 
 .auth-form-container {
   width: 400px;
-  border: 1px solid rgba(1,41,138,0.2);
   border-radius: 17px;
   padding: 30px 20px;
-  box-shadow: 0 16px 15px 0 rgba(1,41,138,0.2);
+  box-shadow: 0 1px 15px 0 rgba(1,41,138,0.2);
 
   .auth-form {
     width: 300px;
@@ -132,22 +134,30 @@ a:hover {
 }
 
 .btn.btn-primary {
-  background-color: white;
-  border: #EA384D 1px solid;
+  background-color: #4C50FA;
+  border: #4C50FA 1px solid;
   box-shadow: none;
-  color: #EA384D;
+  color: white;
   padding: 5px 15px;
+  box-shadow: 0 1px 15px 0 rgba(76, 80, 250, 0.5);
 
   &:hover {
-    background-color: #EA384D;
+    background-color: #4C50FA;
     color: white;
   }
 
   &:active, &:focus {
     outline: none !important;
-    background-color: #EA384D !important;
+    background-color: #4C50FA !important;
     color: white;
   }
+}
+
+.img-container {
+  background: url('../assets/img/library.jpg');
+  height: 100%;
+  flex-grow: 1;
+  background-size: cover;
 }
 
 .main {
