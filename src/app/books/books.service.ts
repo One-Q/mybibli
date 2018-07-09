@@ -25,8 +25,12 @@ export class BooksService {
     return this.http.get('/api/books', {headers: this.options})
   }
 
-  getOneBook(isbn) {
-    return this.http.get(`/api/books/${isbn}`, {headers: this.options})
+  getOneBook(id) {
+    return this.http.get(`/api/books/${id}`, {headers: this.options})
+  }
+
+  addBook(book) {
+    return this.http.post('api/books', book, {headers: this.options});
   }
 
 }

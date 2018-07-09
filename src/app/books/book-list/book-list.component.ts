@@ -32,7 +32,19 @@ export class BookListComponent implements OnInit{
   }
 
   selectBook(book) {
-    this.router.navigate(['/books',book.isbn])
+    this.router.navigate(['/books',book._id])
+  }
+
+  addBook() {
+    let book = {
+      isbn: '',
+      title: '',
+      description: '',
+      releaseDate: ''
+    }
+    this.booksService.addBook(book).subscribe(data => {
+      console.log(data)
+    })
   }
 
 }
@@ -47,6 +59,7 @@ export class BookDataSource extends DataSource<any>{
       this.observer = this.bookService.getBooks();
       this.connect().subscribe((l: any)=>{
         this.list = l;
+        console.log(l)
       });
   }
 

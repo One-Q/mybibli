@@ -1,10 +1,15 @@
 <app-header></app-header>
 <div class="container main">
-  <div class="row">
-    <h1>Books</h1>
+  <div class="row actions-books">
+    <div class="col-md-6">
+      <h1>Books</h1>
+    </div>
+    <div class="col-md-6 text-right">
+      <button class="btn btn-rounded" (click)="addBook()">Ajouter</button>
+    </div>
   </div>
   <div class="row">
-    <div class="books-list">
+    <div class="col-md-12 books-list">
       <div class="example-container mat-elevation-z8">
         <mat-table #table [dataSource]="books">
       
@@ -13,7 +18,7 @@
       
           <!-- Position Column -->
           <ng-container matColumnDef="isbn">
-            <mat-header-cell *matHeaderCellDef> ISBN. </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef> ISBN </mat-header-cell>
             <mat-cell *matCellDef="let book"> {{book.isbn}} </mat-cell>
           </ng-container>
       

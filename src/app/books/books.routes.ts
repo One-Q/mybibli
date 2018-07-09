@@ -6,7 +6,7 @@ export const routes = [
   {
     path: '', children: [
       { path: '', component: BookListComponent},
-      { path: 'book/:isbn', component: BookManageComponent}
+      { path: 'book/:id', component: BookManageComponent}
     ] 
   }
 ]

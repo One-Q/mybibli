@@ -18,7 +18,7 @@ export const ROUTES: Routes = [
   { path: 'register', canActivate: [ConnectedGuard], component: RegisterComponent },
   { path: 'login', canActivate: [ConnectedGuard], component: LoginComponent },
   { path: 'books',canActivate: [AuthGuard] , component: BookListComponent },
-  { path: 'books/:isbn',canActivate: [AuthGuard] , component: BookManageComponent },
+  { path: 'books/:id',canActivate: [AuthGuard] , component: BookManageComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'react', component: ReactComponent },
   { path: '**',    component: NoContentComponent },

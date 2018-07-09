@@ -4,5 +4,6 @@ export interface IBook {
   description: String;
   author: String;
   releaseDate: Date;
+  _id: String;
   // createAt: Date;
 }

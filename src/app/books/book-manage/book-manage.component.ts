@@ -19,9 +19,9 @@ export class BookManageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.bookService.getOneBook(this.activatedRoute.snapshot.paramMap.get('isbn'))
+    this.bookService.getOneBook(this.activatedRoute.snapshot.paramMap.get('id'))
     .subscribe(data => {
-      console.log(this.book)
+      console.log(data)
     })
   }
 

@@ -23,6 +23,7 @@ function getBooks(req, res) {
  * @param {*} res 
  */
 function addBook(req, res) {
+  console.log(req.body)
   let {isbn, title, description, author, releaseDate} = req.body;
   let uid = req.user._id;
   const book = new Book({
@@ -36,6 +37,7 @@ function addBook(req, res) {
 
   book.save((err, savedBook) => {
     if(err) {
+      console.log(err)
       return res.status(500).json({error: 'Erreur interne'})
     } else {
       return res.json({book: savedBook})
@@ -43,11 +45,11 @@ function addBook(req, res) {
   })
 }
 
-function getByIsbn(req, res) {
-  let isbn = req.params.isbn;
+function getById(req, res) {
+  let id = req.params.id;
   let uid = req.user._id;
 
-  Book.findOne({isbn, uid})
+  Book.findOne({_id: id, uid})
     .exec((error, book) => {
       if(error) {
         return res.status(500).json({error})
@@ -57,11 +59,11 @@ function getByIsbn(req, res) {
     })
 }
 
-function modifyByIsbn(req, res) {
-  let isbn = req.params.isbn;
+function modifyById(req, res) {
+  let id = req.params.id;
   let uid = req.user._id;
 
-  Book.findOneAndUpdate({isbn, active: true}, req.body, {new: true}, (error, newBook) => {
+  Book.findOneAndUpdate({_id: id, active: true}, req.body, {new: true}, (error, newBook) => {
     if(error) {
       return res.status(500).json({error})
     }
@@ -73,11 +75,11 @@ function modifyByIsbn(req, res) {
   })
 }
 
-function deleteByIsbn(req, res) {
-  let isbn = req.params.isbn;
+function deleteById(req, res) {
+  let id = req.params.id;
   let uid = req.user._id;
 
-  Book.update({isbn, active: true}, {$set: {active: false}}, function (error, savedBook) {
+  Book.update({_id: id, active: true}, {$set: {active: false}}, function (error, savedBook) {
     if(error) {
       return res.status(500).json({error})
     }
@@ -89,4 +91,4 @@ function deleteByIsbn(req, res) {
   })
 }
 
-export default { getBooks, addBook, getByIsbn, modifyByIsbn, deleteByIsbn };
+export default { getBooks, addBook, getById, modifyById, deleteById };

@@ -2,23 +2,19 @@ import mongoose from 'mongoose';
 
 const BookSchema = new mongoose.Schema({
   isbn: {
-    type: String,
-    required: true
+    type: String
   },
   uid: {
-    type: String,
-    required: true
+    type: String
   },
   title: {
-    type: String,
-    required: true
+    type: String
   },
   description: {
     type: String
   },
   author: {
-    type: String,
-    required: true
+    type: String
   },
   releaseDate: {
     type: Date

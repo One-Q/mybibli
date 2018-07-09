@@ -8,9 +8,9 @@ router.route('/')
   .get(auth.authenticate(), bookCtrl.getBooks)
   .post(auth.authenticate(), bookCtrl.addBook);
 
-router.route('/:isbn')
-  .get(auth.authenticate(),bookCtrl.getByIsbn)
-  .put(auth.authenticate(), bookCtrl.modifyByIsbn)
-  .delete(auth.authenticate(), bookCtrl.deleteByIsbn);
+router.route('/:id')
+  .get(auth.authenticate(),bookCtrl.getById)
+  .put(auth.authenticate(), bookCtrl.modifyById)
+  .delete(auth.authenticate(), bookCtrl.deleteById);
 
 export default router;
