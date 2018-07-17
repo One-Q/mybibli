@@ -164,6 +164,14 @@ a:hover {
   margin-top: 20px;
 }
 
+.paddingTopBottom50 {
+  padding: 50px 0;
+}
+
+.btn.btn-mini {
+  padding: 5px 20px;
+}
+
 @media (max-width: 990px) {
   .first-container {
     display: none;

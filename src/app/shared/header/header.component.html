@@ -1,6 +1,29 @@
 <header>
+  <!--
   <mat-toolbar color="primary" class="mat-elevation-z6">
-    <a [routerLink]="['/']" class="logotTxt">MEAN</a>
-    <a class="links" [routerLink]="['/books']">Books</a>   
+    <div class="container">
+      <div>
+        <a [routerLink]="['/']" class="logotTxt">MEAN</a>
+        <a class="links" [routerLink]="['/books']">Books</a>
+      </div>
+      <span class="example-spacer"></span>
+      <div class="text-right">
+        <button class="btn">Login</button>
+        <a href="#" class="links">Sign up</a>  
+      </div> 
+    </div>
   </mat-toolbar>
+-->
+<div class="navbar">
+  <div class="container d-flex justify-content-between">
+    <div>
+      <a [routerLink]="['/']" class="logotTxt">MEAN</a>
+      <a class="links" [routerLink]="['/books']">Books</a>
+    </div>
+    <div>
+      <a href="/login" class="links">Login</a>  
+      <button class="btn btn-mini" [routerLink]="['/register']">Sign Up</button>
+    </div>
+  </div>
+</div>
 </header>
