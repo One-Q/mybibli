@@ -12,9 +12,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./book-list.component.scss']
 })
 export class BookListComponent implements OnInit{
-
-  public books = new BookDataSource(this.booksService);
-  public displayedColumns = ['isbn','title','author'];
+  
+  books: any;
 
   constructor(
     private booksService: BooksService,
@@ -22,12 +21,12 @@ export class BookListComponent implements OnInit{
   ) {}
 
   ngOnInit() {
-    this.books = new BookDataSource(this.booksService)
+    this.getBooks()
   }
 
   getBooks() {
     this.booksService.getBooks().subscribe(data => {
-      console.log(this.books)
+      this.books = data;
     })
   }
 
@@ -45,34 +44,6 @@ export class BookListComponent implements OnInit{
     this.booksService.addBook(book).subscribe(data => {
       console.log(data)
     })
-  }
-
-}
-
-export class BookDataSource extends DataSource<any>{
-
-  list:IBook[] = new Array<IBook>();
-  observer;
-
-  constructor(private bookService: BooksService){
-      super();
-      this.observer = this.bookService.getBooks();
-      this.connect().subscribe((l: any)=>{
-        this.list = l;
-        console.log(l)
-      });
-  }
-
-  connect(): Observable<IBook[]>{
-      return this.observer;
-  }
-
-  data(): IBook[]{
-      return this.list;
-  }
-
-  disconnect(){
-
   }
 
 }

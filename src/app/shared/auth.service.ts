@@ -22,6 +22,7 @@ export class AuthService {
   }
 
   getUser() {
+    this.isLoggedIn();
     return this.user;
   }
 
@@ -31,7 +32,17 @@ export class AuthService {
   }
 
   isLoggedIn() {
-    return localStorage.getItem('token')
+    let token = localStorage.getItem('token');
+    if(token == null || token == 'null') {
+      return
+    }
+    this.setUser(token);
+    return token;
+  }
+
+  logout() {
+    this.user = null;
+    localStorage.removeItem('token');
   }
 
 }

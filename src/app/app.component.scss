@@ -131,6 +131,22 @@ a:hover {
     outline: none !important;
     border-color: none !important;
   }
+
+  &.btn-ghost {
+    border: 1px solid white;
+    cursor: pointer;
+    background: none;
+    text-align: center;
+    padding: 5px 20px;
+    color: white;
+    box-shadow: none;
+    transition: all ease-in-out .3s;
+  }
+
+  &.btn-ghost:hover {
+    background-color: white;
+    color: #4C50FA;
+  }
 }
 
 .btn.btn-primary {

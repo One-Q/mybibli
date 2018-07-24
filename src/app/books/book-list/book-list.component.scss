@@ -12,3 +12,23 @@
   margin-bottom: 25px;
   align-items: baseline;
 }
+
+.book-col {
+  margin: 10px 0;
+}
+
+.book-container {
+  cursor: pointer;
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  padding: 20px;
+  transition: .3s all ease-in-out;
+
+  h4 {
+    margin: 0;
+  }
+
+  &:hover {
+    box-shadow: 0 1px 15px rgba(0, 0, 0, 0.24), 0 0 2px rgba(0, 0, 0, 0.12);
+  }
+}

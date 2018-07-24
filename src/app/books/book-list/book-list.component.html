@@ -2,42 +2,17 @@
 <div class="container main">
   <div class="row actions-books">
     <div class="col-md-6">
-      <h1>Books</h1>
+      <h2>Books</h2>
     </div>
     <div class="col-md-6 text-right">
       <button class="btn btn-primary" (click)="addBook()">Ajouter</button>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-12 books-list">
-      <div class="example-container mat-elevation-z8">
-        <mat-table #table [dataSource]="books">
-      
-          <!--- Note that these columns can be defined in any order.
-                The actual rendered columns are set as a property on the row definition" -->
-      
-          <!-- Position Column -->
-          <ng-container matColumnDef="isbn">
-            <mat-header-cell *matHeaderCellDef> ISBN </mat-header-cell>
-            <mat-cell *matCellDef="let book"> {{book.isbn}} </mat-cell>
-          </ng-container>
-      
-          <!-- Name Column -->
-          <ng-container matColumnDef="title">
-            <mat-header-cell *matHeaderCellDef> Titre </mat-header-cell>
-            <mat-cell *matCellDef="let book"> {{book.title}} </mat-cell>
-          </ng-container>
-      
-          <!-- Weight Column -->
-          <ng-container matColumnDef="author">
-            <mat-header-cell *matHeaderCellDef> Auteur </mat-header-cell>
-            <mat-cell *matCellDef="let book"> {{book.author}} </mat-cell>
-          </ng-container>
-
-      
-          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-          <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selectBook(row)"></mat-row>
-        </mat-table>
+    <div class="col-12 book-col" *ngFor="let book of books">
+      <div class="book-container" (click)="selectBook(book)">
+        <h3>ISBN : {{ book.isbn }}</h3>
+        <h4>Titre : {{ book.title }}</h4>
       </div>
     </div>
   </div>
